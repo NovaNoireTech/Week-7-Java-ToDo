@@ -1,154 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-
-* {
-  box-sizing: border-box;
-}
-
-
-/* Style the list items */
-ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  list-style-type: none;
-  background: #eee;
-  font-size: 18px;
-  transition: 0.2s;
-  
-  /* make the list items unselectable */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* header css */
-.header {
-  background-color: purple;
-  padding: 35px;
-  color: white;
-  text-align: center;
-}
-
-/* space after the header */
-.header::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* checked off boxes*/
-ul li.checked {
-  background: purple;
-  color: white;
-  text-decoration:solid;
-}
-
-/* Add to do list box */
-input {
-  border:black
-  position: center;
-  width: 25%;
-  padding: 15px;
-  float: center;
-  font-size: 18px;
-}
-
-/* "Add" to do list items  */
-.addBtn {
-  padding: 15px;
-  position:;
-  width: 10%;
-  background: grey;
-  color: white;
-  text-align: center;
-  font-size: 20px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div id="mydiv" class="header">
-  <h1 style="margin:40px">My To Do List</h1>
-  <h3> Complete by the end of the day</h3>
-  <input type="text" id="myInput" placeholder="Please Enter to-do item">
-  <span onclick="newElement()" class="addBtn">Add To Do</span>
-</div>
-
-<ul id="uolist">
-  <li>Fold Laundry <br> Go to the laundry mat</br> </li>
-  <li>Walk the dog  <br> Go to do park for an hour</br></li>
-  <li>Pay Rent  <br> Get a money order</br></li>
-  <li>Go to the store <br> Make a grogercy list</br></li>
-  <li>Clean Bathroom <br> Buy bleach from store</br></li>
-</ul>
-
-<script>
-
-// Mark off the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-// checked off an item when clicking on it
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-// "Add" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("toDoitem").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("Please enter a to do!");
-  } else {
-    document.getElementById("uolist").appendChild(li);
-  }
-  document.getElementById("toDoitem").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-</script>
-
+  <div class="container">
+    <div class="todoList">
+      <h1>Kavunaa's To Do List</h1>
+      <div class="containerrow">
+        <input type="text" id="input-task" placeholder="Add Item">
+        <button onclick="addTodo()">Add Item</button> 
+      </div>
+      <ul id="list-of-todos">
+        <!-- <li class="done">Gym</li>
+        <li>Walk Dog</li>
+        <li>Code Wars</li>
+        <li>Homework</li>
+        <li>Pray</li>
+        <li>Meditate</li> -->
+      </ul>
+    </div>
+  </div>
+  <script src="todo.js"></script>
 </body>
 </html>
-
-
-
-// <!-- Please ensure that your application includes the following features:
-
-// <!-- 1. Form Creation: Develop a form to add a to-do item. Each to-do item should include a title and a description.
-
-// <!-- 2. Displaying To-Do Items: Render each to-do item on the webpage.
-
-//  3. Interactive To-Do Items: Add
-<!-- / a click event listener to each to-do item. When clicked, the item
-<!-- //should either be marked as done by modifying its style or be removed 
-// <!-- from the list entirely. 
-
